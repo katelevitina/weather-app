@@ -1,3 +1,47 @@
+*
+	box-sizing: border-box
+
 body
-	color: #555555
-	font-family: sans-serif
+	color: #ffffff
+	font-family: 'Arsenal', sans-serif
+	background: url(../images/bg.jpg)
+	font-size: 18px
+	letter-spacing: 1px
+
+
+.app
+	text-align: center
+	
+	&__form
+		max-width: 700px
+		margin: 50px auto
+
+
+.form
+	
+	&__input,
+	&__button
+		letter-spacing: 1px
+		margin: 15px auto
+		width: 100%
+		display: block
+		font-family: 'Arsenal', sans-serif
+		font-size: 18px
+		border: 1px solid #cccccc
+		color: #ffffff
+		outline: none
+
+	&__input
+		background: transparent
+		padding: 20px 25px
+
+	&__button
+		background: rgba(#fff, .05)
+		padding: 15px 35px
+		cursor: pointer
+		transition: .3s
+
+		&:hover
+			background: rgba(#fff, .1)
+
+	

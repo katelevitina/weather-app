@@ -1,6 +1,17 @@
-<h1>Weather app</h1>
+<div class="app">
 
-<form ng-submit="getWeather()">
-	<input type="text" ng-model="city">
-	<input type="submit">
-</form>
+	<form class="app__form form" ng-submit="getWeather()">
+		<input class="form__input" type="text" ng-model="city">
+		<input class="form__button" type="submit" value="поиск">
+	</form>
+
+
+	<div ng-if="result">
+		<h2>{{ result.name }}</h2>
+		<div>{{ result.weather[0].description }}</div>
+		<img ng-src="{{ result.icon }}">
+		<div>{{ result.main.temp }} °C</div>
+		<div>{{ result.wind.speed }} м/с</div>
+	</div>
+	
+</div>
