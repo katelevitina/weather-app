@@ -23,7 +23,12 @@ gulp.task('js', function() {
         .pipe(gulp.dest('dist/js'));
 });
 
-gulp.task('default', ['js', 'sass']);
+gulp.task('images', function() {
+    return gulp.src('src/images/**/*.*')
+        .pipe(gulp.dest('dist/images'));
+});
+
+gulp.task('default', ['js', 'sass', 'images']);
 
 gulp.task('watch', ['default'], function() {
 	gulp.watch('src/js/**/*.js', ['js']);

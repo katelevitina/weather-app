@@ -1,15 +1,18 @@
 weatherApp.controller('BaseController',
-    function ($scope, $rootScope, Weather) {
+    function ($scope, $rootScope, Weather, $timeout) {
     	
         $scope.getWeather = function() {
-            
             Weather.get($scope.city).then(function(data) {
-                $scope.result = data.data;
-                $scope.result.icon = 'http://openweathermap.org/img/w/' + data.data.weather[0].icon + '.png';
+            	$scope.loading = true;
+            	$scope.result = null;
+            	if (data.data.id === 519690) {
+            		data.data.name = 'Saint petersburg';
+            	};
+            	$timeout(function() {
+	                $scope.result = data.data;
+	                $scope.result.icon = '/dist/images/icons/' + data.data.weather[0].icon + '.svg';
+            		$scope.loading = false;
+            	}, 500);
             });
         };
-
-        $scope.city = 'Москва';
-        $scope.getWeather('Москва');
-
 	});

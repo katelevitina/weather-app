@@ -1,47 +1,144 @@
 *
 	box-sizing: border-box
 
+	&::selection
+		background: #4f8381
+		color: #fff
+
 body
 	color: #ffffff
-	font-family: 'Arsenal', sans-serif
-	background: url(../images/bg.jpg)
-	font-size: 18px
-	letter-spacing: 1px
+	font-family: 'Roboto', sans-serif
+	background: url(../images/bg.jpg) no-repeat center
+	background-size: cover
+	font-size: 21px
+	margin: 0
 
 
 .app
 	text-align: center
 	
-	&__form
-		max-width: 700px
-		margin: 50px auto
+	&__wrapper
+		width: 70%
+		margin: 0 auto
+		padding: 30px 0
+		display: flex
+		min-height: 100vh
+		flex-direction: column
+		justify-content: center
 
+		@media(max-width: 768px)
+			width: 90%
+			padding: 20px 0
+	
+	&__form
+		flex: 0 0 100%
+		margin: 30px 0
+		display: block
+
+		@media(max-width: 768px)
+			margin: 20px 0
+
+.card
+	display: block
+	flex: 0 0 100%
+	transition: .3s
+	transform: scale(0)
+	margin: 30px 0
+
+	@media(max-width: 768px)
+		margin: 20px 0
+
+	&_visible
+		transform: scale(1)
+
+	&__icon
+		max-width: 100px
+
+		@media(max-width: 768px)
+			max-width: 70px
+
+	&__title
+		font-size: 48px
+		text-transform: uppercase
+
+		@media(max-width: 768px)
+			font-size: 32px
+
+	&__temp
+		font-size: 150px
+		letter-spacing: 5px
+
+		@media(max-width: 768px)
+			font-size: 80px
 
 .form
 	
 	&__input,
 	&__button
-		letter-spacing: 1px
+		letter-spacing: 2px
 		margin: 15px auto
 		width: 100%
 		display: block
-		font-family: 'Arsenal', sans-serif
-		font-size: 18px
-		border: 1px solid #cccccc
+		font-family: 'Roboto', sans-serif
+		font-size: 28px
+		border: 1px solid rgba(#fff, .4)
 		color: #ffffff
 		outline: none
+		transition: .3s
+		text-transform: uppercase
+		padding: 15px 25px
+
+		@media(max-width: 768px)
+			padding: 10px 20px
+			font-size: 18px
+
+		&:focus
+			border: 1px solid rgba(#fff, .7)
 
 	&__input
 		background: transparent
-		padding: 20px 25px
+		
 
 	&__button
 		background: rgba(#fff, .05)
-		padding: 15px 35px
 		cursor: pointer
 		transition: .3s
 
 		&:hover
 			background: rgba(#fff, .1)
+
+.button
+	&__icon
+		vertical-align: middle
+		width: 35px
+		height: 35px
+		background: url(/dist/images/icons/01d.svg) no-repeat center
+		animation: spin 4s linear infinite
+		display: none
+
+		@media(max-width: 768px)
+			width: 25px
+			height: 25px
+
+	&__text
+		display: inline-block
+		vertical-align: middle
+
+	&_loading
+
+		.button__icon
+			display: inline-block
+
+		.button__text
+			display: none
+
+
+@keyframes spin
+	from
+		transform: rotate(0deg)
+	to
+		transform: rotate(360deg)
+        
+
 
 	
