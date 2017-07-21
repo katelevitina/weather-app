@@ -1,20 +1,9 @@
 <div class="app">
 	<div class="app__wrapper">
-
-		<form class="app__form form" ng-submit="getWeather()">
+		<form class="app__form form" ng-submit="submit()">
 			<input class="form__input" type="text" ng-model="city">
-			<button class="form__button button" ng-class="{'button_loading': loading}"><span class="button__text">Search</span><span class="button__icon"></span></button>
+			<button class="form__button button" ng-disabled="city.length < 2" ng-class="{'button_loading': loading}"><span class="button__text">Search</span><span class="button__icon"></span></button>
 		</form>
-
-
-		<div class="card" ng-class="{'card_visible': result}">
-			<div class="card__title">{{ result.name }}</div>
-			<div class="card__description">{{ result.weather[0].description }}</div>
-			<img class="card__icon" ng-src="{{ result.icon }}">
-			<div class="card__temp">{{ result.main.temp }} °C</div>
-			<div class="card__wind">wind - {{ result.wind.speed }} м/с</div>
-		</div>
-		
 	</div>
 	
 </div>

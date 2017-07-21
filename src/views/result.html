@@ -1,0 +1,55 @@
+<div class="app">
+	<div class="app__wrapper">
+
+		<form class="app__form form" ng-submit="submit()">
+			<input class="form__input" type="text" ng-model="city">
+			<button class="form__button button" ng-disabled="city.length < 2" ng-class="{'button_loading': loading}"><span class="button__text">Search</span><span class="button__icon"></span></button>
+		</form>
+		
+		<div class="result" ng-class="{'result_visible': result}">
+			<div class="result__city">{{ result.city.name }}</div>
+			<div class="result__row result__header" ng-show="result.list">
+				<div class="result__col result__col_sort" ng-click="sortType = 'dt'; sortReverse = !sortReverse">
+					Date
+					<span class="result__arrow" ng-show="sortType == 'dt' && !sortReverse">&#9660;</span>
+					<span class="result__arrow" ng-show="sortType == 'dt' && sortReverse">&#9650;</span>
+				</div>
+				<div class="result__col">Weather</div>
+				<div class="result__col result__col_sort" ng-click="sortType = 'temp.morn'; sortReverse = !sortReverse">
+					Morning
+					<span class="result__arrow" ng-show="sortType == 'temp.morn' && !sortReverse">&#9660;</span>
+					<span class="result__arrow" ng-show="sortType == 'temp.morn' && sortReverse">&#9650;</span>
+				</div>
+				<div class="result__col result__col_sort" ng-click="sortType = 'temp.day'; sortReverse = !sortReverse">
+					Day
+					<span class="result__arrow" ng-show="sortType == 'temp.day' && !sortReverse">&#9660;</span>
+					<span class="result__arrow" ng-show="sortType == 'temp.day' && sortReverse">&#9650;</span>
+				</div>
+				<div class="result__col result__col_sort" ng-click="sortType = 'temp.eve'; sortReverse = !sortReverse">
+					Evening
+					<span class="result__arrow" ng-show="sortType == 'temp.eve' && !sortReverse">&#9660;</span>
+					<span class="result__arrow" ng-show="sortType == 'temp.eve' && sortReverse">&#9650;</span>
+				</div>
+				<div class="result__col result__col_sort" ng-click="sortType = 'temp.night'; sortReverse = !sortReverse">
+					Night
+					<span class="result__arrow" ng-show="sortType == 'temp.night' && !sortReverse">&#9660;</span>
+					<span class="result__arrow" ng-show="sortType == 'temp.night' && sortReverse">&#9650;</span>
+				</div>
+			</div>
+			<div class="result__row" ng-repeat="day in result.list | orderBy:sortType:sortReverse">
+				<div class="result__col result__day">
+					<div>{{ day.dt * 1000 | date:'dd.MM / EEE' }}</div>
+				</div>
+				<div class="result__col result__weather">
+					<img class="result__icon" ng-src="/dist/images/icons/{{ day.weather[0].icon }}.svg">
+					<div class="result__description">{{ day.weather[0].description }}</div>
+				</div>
+				<div class="result__col result__temp"><span class="result__text">Morning -</span>{{ day.temp.morn | number:0 }} °C</div>
+				<div class="result__col result__temp"><span class="result__text">Day -</span>{{ day.temp.day | number:0 }} °C</div>
+				<div class="result__col result__temp"><span class="result__text">Evening -</span>{{ day.temp.eve | number:0 }} °C</div>
+				<div class="result__col result__temp"><span class="result__text">Night -</span>{{ day.temp.night | number:0 }} °C</div>
+			</div>
+		</div>
+	</div>
+	
+</div>

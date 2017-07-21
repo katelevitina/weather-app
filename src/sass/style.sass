@@ -41,37 +41,73 @@ body
 		@media(max-width: 768px)
 			margin: 20px 0
 
-.card
-	display: block
-	flex: 0 0 100%
+.result
+	font-size: 16px
+	margin-top: 50px
 	transition: .3s
-	transform: scale(0)
-	margin: 30px 0
+	transform: scale(.8)
+	opacity: 0
 
 	@media(max-width: 768px)
 		margin: 20px 0
 
 	&_visible
 		transform: scale(1)
+		opacity: 1
 
-	&__icon
-		max-width: 100px
-
-		@media(max-width: 768px)
-			max-width: 70px
-
-	&__title
+	&__city
 		font-size: 48px
 		text-transform: uppercase
+		margin-bottom: 50px
 
 		@media(max-width: 768px)
 			font-size: 24px
 
-	&__temp
-		font-size: 150px
+	&__text
+		display: none
 
 		@media(max-width: 768px)
-			font-size: 60px
+			display: inline-block
+			margin-right: 5px
+	
+	&__row
+		display: flex
+		align-items: center
+		justify-content: space-between
+
+		&:not(:last-child)
+			border-bottom: 1px solid rgba(#fff, .1)
+
+		@media(max-width: 768px)
+			flex-direction: column
+
+	&__header
+		padding: 0
+		background: rgba(#fff, .05)
+		border-bottom: none
+
+		@media(max-width: 768px)
+			display: none
+
+		.result__col_sort
+			cursor: pointer
+			padding: 20px 0
+
+			&:hover
+				background: rgba(#fff, .1)
+
+	&__arrow
+		font-size: 10px
+
+	&__col
+		flex: 0 0 calc(100% / 6)
+		padding: 10px 20px
+
+	&__icon
+		max-width: 40px
+
+	&__description
+		font-size: 14px
 
 .form
 	
@@ -110,6 +146,11 @@ body
 			background: rgba(#fff, .1)
 
 .button
+
+	&[disabled]
+		opacity: .2
+		pointer-events: none
+
 	&__icon
 		vertical-align: middle
 		width: 35px
