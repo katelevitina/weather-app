@@ -4,6 +4,6 @@ Builds the project and starts the server.
 ##### `npm run build`
 Builds the project. The build artifacts will be stored in the `dist/` directory.
 ##### `npm run build:dev`
-Builds the project and start gulp watcher.
+Builds the project and starts gulp watcher.
 ##### `npm run serve`
 Starts dev server on http://localhost:8100/
