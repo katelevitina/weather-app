@@ -1,10 +1,9 @@
 # Weather-app
-
-### Installation
-
-Install the dependencies and devDependencies and start the server.
-
-```sh
-$ npm install
-$ npm start
-```
+##### `npm run start`
+Builds the project and starts the server.
+##### `npm run build`
+Builds the project. The build artifacts will be stored in the `dist/` directory.
+##### `npm run build:dev`
+Builds the project and start gulp watcher.
+##### `npm run serve`
+Starts dev server on http://localhost:8100/

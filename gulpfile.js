@@ -1,36 +1,36 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var concat = require('gulp-concat');
+const sass = require('gulp-sass');
+const concat = require('gulp-concat');
+const gulp = require('gulp');
 
-var paths = {
-	js: [
-		'node_modules/angular/angular.js',
-    	'node_modules/angular-route/angular-route.js',
-    	'node_modules/angular-resource/angular-resource.js',
-    	'src/js/**/*.js'
-	]
+const paths = {
+  js: [
+    'node_modules/angular/angular.js',
+    'node_modules/angular-route/angular-route.js',
+    'node_modules/angular-resource/angular-resource.js',
+    'src/js/**/*.js'
+  ]
 };
 
-gulp.task('sass', function() {
-    return gulp.src('src/sass/style.sass')
-        .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest('dist/css'));
+gulp.task('sass', () => {
+  return gulp.src('src/sass/style.sass')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('dist/css'));
 });
 
-gulp.task('js', function() {
-    return gulp.src(paths.js)
-        .pipe(concat('app.js'))
-        .pipe(gulp.dest('dist/js'));
+gulp.task('js', () => {
+  return gulp.src(paths.js)
+    .pipe(concat('app.js'))
+    .pipe(gulp.dest('dist/js'));
 });
 
-gulp.task('images', function() {
-    return gulp.src('src/images/**/*.*')
-        .pipe(gulp.dest('dist/images'));
+gulp.task('images', () => {
+  return gulp.src('src/images/**/*.*')
+    .pipe(gulp.dest('dist/images'));
 });
 
-gulp.task('default', ['js', 'sass', 'images']);
+gulp.task('default', gulp.parallel('js', 'sass', 'images'));
 
-gulp.task('watch', ['default'], function() {
-	gulp.watch('src/js/**/*.js', ['js']);
-	gulp.watch('src/sass/**/*.sass', ['sass']);
+gulp.task('watch', () => {
+  gulp.watch('src/js/**/*.js', gulp.series('js'));
+  gulp.watch('src/sass/**/*.sass', gulp.series('sass'));
 });
