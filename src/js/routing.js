@@ -3,13 +3,13 @@ weatherApp.config(['$routeProvider', '$locationProvider',
 		$locationProvider.html5Mode(true);
 	    $routeProvider
 	    	.when('/', {
-	    		templateUrl: 'src/views/base.html',
+	    		templateUrl: '/views/base.html',
 	    		controller: 'BaseController',
 	    		resolve: {
 	    		}
 	    	})
 	    	.when('/city/:city', {
-	    		templateUrl: 'src/views/result.html',
+	    		templateUrl: '/views/result.html',
 	    		controller: 'ResultController',
 	    		resolve: {
 	    			weather: function(Weather, $route) {

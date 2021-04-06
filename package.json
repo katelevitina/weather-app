@@ -7,7 +7,7 @@
     "start": "npm run build && npm run serve",
     "build": "gulp",
     "build:dev": "gulp && gulp watch",
-    "serve": "ws --spa index.html"
+    "serve": "ws -d dist --spa index.html"
   },
   "repository": {
     "type": "git",

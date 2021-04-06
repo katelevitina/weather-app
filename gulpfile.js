@@ -11,6 +11,11 @@ const paths = {
   ]
 };
 
+gulp.task('html', () => {
+  return gulp.src('src/**/*.html')
+    .pipe(gulp.dest('dist'));
+});
+
 gulp.task('sass', () => {
   return gulp.src('src/sass/style.sass')
     .pipe(sass().on('error', sass.logError))
@@ -28,7 +33,7 @@ gulp.task('images', () => {
     .pipe(gulp.dest('dist/images'));
 });
 
-gulp.task('default', gulp.parallel('js', 'sass', 'images'));
+gulp.task('default', gulp.parallel('js', 'sass', 'images', 'html'));
 
 gulp.task('watch', () => {
   gulp.watch('src/js/**/*.js', gulp.series('js'));
