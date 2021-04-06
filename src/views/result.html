@@ -41,7 +41,7 @@
 					<div>{{ day.dt * 1000 | date:'dd.MM / EEE' }}</div>
 				</div>
 				<div class="result__col result__weather">
-					<img class="result__icon" ng-src="/dist/images/icons/{{ day.weather[0].icon }}.svg">
+					<img class="result__icon" ng-src="/images/icons/{{ day.weather[0].icon }}.svg">
 					<div class="result__description">{{ day.weather[0].description }}</div>
 				</div>
 				<div class="result__col result__temp"><span class="result__text">Morning -</span>{{ day.temp.morn | number:0 }} °C</div>
